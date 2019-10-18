@@ -9,8 +9,9 @@ import com.example.seul.models.Restaurant
 import com.example.seul.repositories.RestaurantRepositoryImpl
 import kotlinx.coroutines.launch
 import java.io.IOException
+import javax.inject.Inject
 
-class MainViewModel : ViewModel(){
+class MainViewModel @Inject constructor() : ViewModel(){
 
     private val restaurantRepository = RestaurantRepositoryImpl()
 
