@@ -3,6 +3,7 @@ package com.example.seul.di.component
 import android.app.Application
 import com.example.seul.SeulApplication
 import com.example.seul.di.modules.ActivityModule
+import com.example.seul.di.modules.RetrofitModule
 import com.example.seul.di.modules.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
@@ -15,7 +16,8 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         ActivityModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        RetrofitModule::class
     ]
 )
 interface SeulComponent : AndroidInjector<SeulApplication> {

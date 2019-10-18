@@ -1,10 +1,13 @@
 package com.example.seul.repositories
 
-import com.example.seul.data.remote.restaurantsApi
+import com.example.seul.data.remote.RestaurantsApi
 import com.example.seul.models.Location
 import com.example.seul.models.Restaurant
+import javax.inject.Inject
 
-class RestaurantRepositoryImpl() : RestaurantRepository{
+class RestaurantRepositoryImpl @Inject constructor(
+    private val restaurantsApi: RestaurantsApi
+) : RestaurantRepository{
     override suspend fun getRestaurants(): List<Restaurant> {
         return listOf(
             Restaurant(

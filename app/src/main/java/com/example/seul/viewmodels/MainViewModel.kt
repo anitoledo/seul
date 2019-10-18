@@ -11,9 +11,9 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor() : ViewModel(){
-
-    private val restaurantRepository = RestaurantRepositoryImpl()
+class MainViewModel @Inject constructor(
+    private val restaurantRepository: RestaurantRepositoryImpl
+) : ViewModel(){
 
     private val _restaurants = MutableLiveData<ResponseData<List<Restaurant>>>()
     val restaurants : LiveData<ResponseData<List<Restaurant>>>
