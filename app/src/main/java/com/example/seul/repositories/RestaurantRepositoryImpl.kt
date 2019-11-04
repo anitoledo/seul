@@ -1,46 +1,46 @@
 package com.example.seul.repositories
 
+import com.example.seul.ResponseData
 import com.example.seul.data.remote.RestaurantsApi
-import com.example.seul.models.Location
 import com.example.seul.models.Restaurant
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
     private val restaurantsApi: RestaurantsApi
 ) : RestaurantRepository{
-    override suspend fun getRestaurants(): List<Restaurant> {
-        return listOf(
-            Restaurant(
-                "123",
-                "McDonalds",
-                "Cheap fast food",
-                Location(123.0, 123.0),
-                "5",
-                "Fast Food",
-                null
-            ),
-            Restaurant(
-                "123",
-                "Burger King",
-                "Cheap fast food",
-                Location(123.0, 123.0),
-                "3.2",
-                "Fast Food",
-                null
-            )
-        )
+
+    override suspend fun getRestaurants(): ResponseData<List<Restaurant>> {
+        return try {
+            ResponseData.Success(restaurantsApi.getRestaurants())
+        } catch (e: Exception){
+            ResponseData.Error()
+        }
     }
 
-    override suspend fun getRestaurant(id: String): Restaurant {
-        return restaurantsApi.getRestaurant(id)
+    override suspend fun getRestaurant(id: String): ResponseData<Restaurant> {
+        return try {
+            ResponseData.Success(restaurantsApi.getRestaurant(id))
+        } catch (e: Exception){
+            ResponseData.Error()
+        }
     }
 
-    override suspend fun postRestaurant(restaurant: Restaurant) {
-        return restaurantsApi.postRestaurant(restaurant)
+    override suspend fun postRestaurant(restaurant: Restaurant): Boolean {
+        return try {
+            restaurantsApi.postRestaurant(restaurant)
+            true
+        } catch (e: Exception){
+            false
+        }
     }
 
-    override suspend fun deleteRestaurant(id: String) {
-        return restaurantsApi.deleteRestaurant(id)
+    override suspend fun deleteRestaurant(id: String): Boolean {
+        return try {
+            restaurantsApi.deleteRestaurant(id)
+            true
+        } catch (e: Exception){
+            false
+        }
     }
 
 }

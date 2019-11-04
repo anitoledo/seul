@@ -11,7 +11,7 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.example.seul"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -19,10 +19,10 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField 'String', 'BASE_URL', '"http://10.0.2.2:8080/"'
         }
         release {
-            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField 'String', 'BASE_URL', '"http://10.0.2.2:8080/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -40,7 +40,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     // Material
-    implementation 'com.google.android.material:material:1.1.0-beta01'
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
@@ -59,4 +60,9 @@ dependencies {
 
     // Logger
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Activity and Fragment Extension
+    implementation "androidx.activity:activity-ktx:1.0.0"
+    implementation "androidx.fragment:fragment-ktx:1.1.0"
+
 }

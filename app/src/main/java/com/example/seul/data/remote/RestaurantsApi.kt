@@ -10,9 +10,9 @@ interface RestaurantsApi {
     @POST("restaurant")
     suspend fun postRestaurant(@Body restaurant: Restaurant)
 
-    @DELETE("restaurant/:id")
+    @GET("restaurant/{id}")
     suspend fun getRestaurant(@Path("id") id: String): Restaurant
 
-    @DELETE("restaurant/:id")
+    @DELETE("restaurant/{id}")
     suspend fun deleteRestaurant(@Path("id") id: String)
 }
